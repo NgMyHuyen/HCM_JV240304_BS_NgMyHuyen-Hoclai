@@ -95,16 +95,16 @@ public class Main {
             int choice = Integer.parseInt(sc.nextLine());
             switch (choice) {
                 case 1:
-//                    displayLaptop();
+                    displayLaptop();
                     break;
                 case 2:
-//                   addLaptop(sc);
+                  addLaptop();
                     break;
                 case 3:
-//                    updateLaptop(sc);
+//                  updateLaptop(sc);
                     break;
                 case 4:
-//                    C
+                    deleteLaptop();
                     break;
                 case 5:
 //                    thongke();
