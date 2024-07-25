@@ -11,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         while (true) {
 
             System.out.println("******************LAPTOP-MANAGEMENT******************\n");
@@ -74,6 +75,9 @@ public class Main {
     }
 
 
+    private static int size = 0;
+    private static Laptop[] laptops = new Laptop[10];
+
     private static void laptopMenu() {
         while (true) {
             System.out.println(
@@ -100,7 +104,7 @@ public class Main {
 //                    updateLaptop(sc);
                     break;
                 case 4:
-//                    deleteLaptop(sc);
+//                    C
                     break;
                 case 5:
 //                    thongke();
@@ -195,5 +199,45 @@ public class Main {
     LaptopType.nextId = laptopTypeCount + 1;
         System.out.println("Xóa thành công!");
 }
+
+    public static void displayLaptop() {
+        if (laptopTypeCount == 0) {
+            System.out.println("Danh sách rỗng.");
+            return;
+        }
+        for (int i = 0; i < laptopTypeCount; i++) {
+            System.out.println(laptops[i]);
+        }
+    }
+
+    public static void deleteLaptop() {
+        System.out.print("Nhập id cần xoá: ");
+        Scanner scanner = new Scanner(System.in);
+        String id = scanner.nextLine();
+        for (int i = 0; i < laptopTypeCount; i++) {
+            if (laptops[i].getLaptopId().equals(id)) {
+                for (int j = i; j < laptopTypeCount - 1; j++) {
+                    laptops[j] = laptops[j + 1];
+                }
+                laptops[laptopTypeCount - 1] = null;
+                laptopTypeCount--;
+                System.out.println("Xoá thành công.");
+                return;
+            }
+        }
+        System.out.println("Laptop với id " + id + " không tìm thấy.");
+    }
+
+    public static void addLaptop() {
+        if (laptopTypeCount >= laptops.length) {
+            Laptop[] newLaptops = new Laptop[laptopTypeCount + 1];
+            System.arraycopy(laptops, 0, newLaptops, 0, laptops.length);
+            laptops = newLaptops;
+        }
+        Laptop laptop = new Laptop();
+        laptop.inputData();
+        laptops[laptopTypeCount++] = laptop;
+        System.out.println("Thêm thành công.");
+    }
     }
 
